@@ -1,0 +1,14 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    }
+
+    /* Make the div take full size of the screen */
+    .full-screen-div {
+    position: fixed; /* Fixed positioning to keep it in the viewport */
+    top: 0; /* Position it at the top */
+    left: 0; /* Position it at the left */
+    width: 100vw; /* 100% width of the viewport */
+    height: 100vh; /* 100% height of the viewport */
+    background-color: #f0f0f0; /* Optional background color */
+    }

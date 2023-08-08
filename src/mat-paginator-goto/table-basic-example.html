@@ -1,0 +1,33 @@
+
+{{displayedColumns | json}}
+
+<div class="col-md-12">
+	<div class="row">
+
+		<div class="example-container mat-elevation-z8">
+			<mat-table [dataSource]="dataSource" matSort>
+				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+				<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <ng-container *ngFor="let key of keyss(tt)" [matColumnDef]="key">
+					<mat-header-cell *matHeaderCellDef mat-sort-header> {{key}} </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row[key]}} </mat-cell>
+				</ng-container>
+				<!-- <ng-container matColumnDef="name">
+					<mat-header-cell *matHeaderCellDef mat-sort-header> TOKEN NAME </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+				</ng-container> -->
+
+				<ng-container matColumnDef="description">
+					<mat-header-cell *matHeaderCellDef mat-sort-header> INDUSTRY </mat-header-cell>
+					<mat-cell *matCellDef="let row" [style.color]=""> {{row.description}} </mat-cell>
+				</ng-container>
+
+
+			</mat-table>
+
+			<mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+		</div>
+
+
+	</div>
+</div>

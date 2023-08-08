@@ -7,6 +7,9 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+
+
+
 <style>
   :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -302,6 +305,14 @@
   }
 </style>
 
+<div style="position:relative">
+<button  style="z-index: 9999;
+background: aqua;
+"  (click)="modalGrid()"   mat-button>Click Me!</button>
+<button  style="z-index: 9999;
+background: aqua;
+"  (click)="modalGrid2()"   mat-button>Click Me with edit !</button>
+</div>
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
   <img
