@@ -1,20 +1,25 @@
 {
   "name": "gen-grid2",
-  "version": "0.0.51",
+  "version": "0.0.83",
   "peerDependencies": {
-    "ngx-draggable": "^1.0.0",
     "@angular/animations": "^16.1.6",
     "@angular/cdk": "^16.1.5",
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0",
-    "@angular/material": "^16.1.5"
+    "@angular/material": "^16.1.5",
+    "ngx-draggable": "^1.0.0"
   },
   "dependencies": {
+
     "tslib": "^2.3.0"
   },
   "sideEffects": false,
   "allowedNonPeerDependencies": [
-    "ngx-draggable"
-  ]
+    "ngx-draggable",
+    "gen-grid2"
+  ],
+  "devDependencies": {
+    "@types/chrome": "^0.0.243",
+    "typescript": "^5.1.6"
+  }
 }
-

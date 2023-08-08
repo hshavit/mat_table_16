@@ -9,18 +9,20 @@
     import { Component, ViewChild, OnInit, ElementRef, OnChanges } from '@angular/core';
 
     import { Router } from '@angular/router';
+import { GenGrid2Service } from './gen-grid2.service';
 
     @Component({
       selector: 'table-basic-example',
       styleUrls: ['table-basic-example.css'],
       templateUrl: 'table-basic-example.html',
     })
-    export class TableBasicExample implements OnInit {
+    export  class TableBasicExample implements OnInit {
 
       name = 'Angular 5';
 
-      displayedColumns = ['name', 'description'];
-      dataSource: MatTableDataSource<any> = new MatTableDataSource(this.loadTokens());
+      displayedColumns = [];
+      /* dataSource: MatTableDataSource<any> =  new MatTableDataSource(this.loadTokens());  */
+      dataSource: MatTableDataSource<any> =  new MatTableDataSource();
       id: any;
       // resultsLength = 0;
       // pageSize = 5;
@@ -29,7 +31,7 @@
       @ViewChild(MatSort) sort!: MatSort;
 
 
-      tt = this.loadTokens()[0];
+      tt; // = this.loadTokens()[0];
 
       keyss(obj: Object) {
         if(obj==undefined)
@@ -39,7 +41,7 @@
       }
 
 
-      constructor() {
+      constructor( ) {
         let ttt = this.loadTokens();
         this.displayedColumns = [...Object.keys(ttt[0])];
         console.log(this.displayedColumns);
@@ -51,13 +53,38 @@
         this.loadTokens();
       }
 
-      loadTokens() {
-        let str = localStorage.getItem("myData");
 
-        if(str)
-          return ( str);
-        else
-          return null;
+      storedObArr;
+      loadTokensFlg=false;
+      loadTokens():any {
+
+        this.loadTokensFlg=true;
+
+
+        /* setInterval(
+         () =>  {
+          this.storedObArr = localStorage.getItem("myData");
+          this.storedObArr = JSON.parse(this.storedObArr);
+        }
+        ,4000) */
+
+        /* let storedObArr = [];
+        if(storedValue){
+          storedObArr = JSON.parse(storedValue);
+        } */
+
+        return this.storedObArr;
+
+        //if (storedValue !== null) {
+          // Use the stored value
+          //let  result: string = storedValue; // TypeScript knows it's a string
+          //return  result;
+        //} else {//
+//          console.log('Value not found in localStorage.');
+  //        return  null;
+    //    }
+
+
 
         return [
           { position: 1, name3: '3ddd', name2: 'ddd', name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
@@ -85,7 +112,9 @@
         this.dataSource.sort = this.sort;
       }
 
-      applyFilter(filterValue: string) {
+      applyFilter(event:any ) {
+        /* !.target as   !.value */
+        let filterValue = event.target.value
         filterValue = filterValue.trim(); // Remove whitespace
         filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
         this.dataSource.filter = filterValue;

@@ -3,6 +3,9 @@
     Use of this source code is governed by an MIT-style license that
     can be found in the LICENSE file at http://angular.io/license */
 
+    /// <reference types="@types/chrome" />
+
+    /* import * as chrome from 'chrome'; */
     import { MatTable, MatTableDataSource } from '@angular/material/table';
     import {  MatSort } from '@angular/material/sort';
     import {  MatPaginator } from '@angular/material/paginator';
@@ -20,7 +23,7 @@ import { GenGrid2Service } from './gen-grid2.service';
 
       name = 'Angular 5';
 
-      displayedColumns = ['name', 'description'];
+      displayedColumns:any = [];
       dataSource: MatTableDataSource<any> = new MatTableDataSource(this.loadTokens());
       id: any;
       // resultsLength = 0;
@@ -30,7 +33,7 @@ import { GenGrid2Service } from './gen-grid2.service';
       @ViewChild(MatSort) sort!: MatSort;
 
 
-      tt = this.loadTokens()[0];
+      tt; /*  = this.loadTokens()[0];S */
 
       keyss(obj: Object) {
         if(obj==undefined)
@@ -41,9 +44,9 @@ import { GenGrid2Service } from './gen-grid2.service';
 
 
       constructor( ) {
-        let ttt = this.loadTokens();
+        /* let ttt = this.loadTokens();
         this.displayedColumns = [...Object.keys(ttt[0])];
-        console.log(this.displayedColumns);
+        console.log(this.displayedColumns); */
 
 
        }
@@ -53,15 +56,52 @@ import { GenGrid2Service } from './gen-grid2.service';
       }
 
 
-      storedObArr;
+      storedObArr = [];
+      loadTokensFlg=false;
       loadTokens():any {
 
-        setInterval(
+        chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+
+          if(request.popupActive || request.checkPopup)
+                return;
+
+          console.log('typescript communication');
+
+          this.storedObArr = JSON.parse(request.jsonString);
+          this.storedObArr.splice(this.storedObArr.length-1, 1);
+
+          if( Object.keys( this.storedObArr[0]).length < Object.keys( this.storedObArr[2]).length )
+               this.storedObArr.splice(0, 1);
+          if( Object.keys( this.storedObArr[0]).length < Object.keys( this.storedObArr[2]).length )
+               this.storedObArr.splice(0, 1);
+
+         /*  this.displayedColumns = ["name", "description"]; */
+          /* this.dataSource = new rV(this.storedObArr); */
+          /* this.dataSource = this.storedObArr; */
+          this.dataSource = new MatTableDataSource<any>(this.storedObArr);
+
+          this.tt = this.storedObArr[0];
+
+          let e = this.storedObArr;
+          this.displayedColumns = [...Object.keys(e[3])];
+
+          if(this.displayedColumns[0].trim() == "")
+            this.displayedColumns.splice(0, 1);
+
+          console.log(this.displayedColumns);
+
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
+        this.loadTokensFlg=true;
+
+
+        /* setInterval(
          () =>  {
           this.storedObArr = localStorage.getItem("myData");
           this.storedObArr = JSON.parse(this.storedObArr);
         }
-        ,4000)
+        ,4000) */
 
         /* let storedObArr = [];
         if(storedValue){
