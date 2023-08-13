@@ -20,7 +20,7 @@ import { GenGrid2Service } from './gen-grid2.service';
 
       name = 'Angular 5';
 
-      displayedColumns = [];
+      displayedColumns:any = [];
       /* dataSource: MatTableDataSource<any> =  new MatTableDataSource(this.loadTokens());  */
       dataSource: MatTableDataSource<any> =  new MatTableDataSource();
       id: any;

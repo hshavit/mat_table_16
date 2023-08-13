@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "../.."
+		},
+		{
+			"path": "../../../nodeJS server"
+		},
+		{
+			"path": "../../../pizza/pizza"
 		}
 	],
 	"settings": {}
