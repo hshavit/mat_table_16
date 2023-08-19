@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { GenGrid2Component } from './gen-grid2.component';
 import { MatTableModule } from '@angular/material/table';
-import { TableBasicExample } from './table-basic-example';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,18 +9,19 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { DraggableDirective } from './draggable.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { GenGridEditableComponent } from './gen-grid-editable.component';
+import { TableBasicExample2 } from './table-basic-example 2';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
-    GenGrid2Component,
-    TableBasicExample,
-    DraggableDirective
+    GenGridEditableComponent,
+    TableBasicExample2,
+
 
   ],
   imports: [
@@ -30,6 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatProgressSpinnerModule,
     HttpClientModule,
     MatSortModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCardModule,
     MatSelectModule,
     MatPaginatorModule,
     MatTableModule,
@@ -38,8 +42,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule
   ],
   exports: [
-    GenGrid2Component,
-    DraggableDirective
-  ]
+    GenGridEditableComponent,
+
+  ],
+
 })
-export class GenGrid2Module { }
+export class genGridEditable { }

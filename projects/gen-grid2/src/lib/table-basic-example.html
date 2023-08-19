@@ -1,11 +1,3 @@
-
-<!-- <pre>
-  {{srvce.isDragging}}
-  {{srvce.startX}}
-  {{srvce.startY}}
-</pre>
- -->
-
 <div appDraggable id="ddd" style="cursor: move; background-color: aqua;" >
 <br>
 <br>
@@ -26,13 +18,14 @@
       <mat-spinner id="spinner"></mat-spinner>
 </div> -->
 
-<div class="col-md-12">
+<!-- *ngIf = "storedObArr$ | async" -->
+<div  class="col-md-12">
 	<div class="row">
 		<div class="example-container mat-elevation-z8">
 			<mat-table [dataSource]="dataSource" matSort>
 				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 				<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        <ng-container *ngFor="let key of keyss(tt)" [matColumnDef]="key">
+        <ng-container *ngFor="let key of keyss(displayedColumns)" [matColumnDef]="key">
 					<mat-header-cell *matHeaderCellDef mat-sort-header> {{key}} </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row[key]}} </mat-cell>
 				</ng-container>
@@ -41,12 +34,10 @@
 					<mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
 				</ng-container> -->
 
-				<ng-container matColumnDef="description">
+				<!-- <ng-container matColumnDef="description">
 					<mat-header-cell *matHeaderCellDef mat-sort-header> INDUSTRY </mat-header-cell>
 					<mat-cell *matCellDef="let row" [style.color]=""> {{row.description}} </mat-cell>
-				</ng-container>
-
-
+				</ng-container> -->
 			</mat-table>
 			<mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 		</div>

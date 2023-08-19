@@ -13,12 +13,12 @@ export class AppComponent {
   title = 'mat_table_16';
 
   constructor(
-    @Inject(MAT_MDC_DIALOG_DATA) public dialogData: any,
+/*     @Inject(MAT_MDC_DIALOG_DATA) public dialogData: any,
+    @Inject(MAT_DIALOG_DATA) public data: any, */
+    private dialog: MatDialog) {
 
-     private dialog: MatDialog) {
 
-
-      let inttttt = setInterval(() => {
+/*  let inttttt = setInterval(() => {
 
         let msg;
         if(msg = localStorage.getItem("myData")){
@@ -28,7 +28,7 @@ export class AppComponent {
         }
       }, 1000);
 
-  }
+ */  }
 
   modalGrid(msg = null) {
 

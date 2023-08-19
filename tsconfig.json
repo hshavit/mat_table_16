@@ -9,6 +9,9 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "paths": {
+      "gen-grid-editable": [
+        "dist/gen-grid-editable"
+      ],
       "genGrid": [
         "dist/gen-grid"
       ],

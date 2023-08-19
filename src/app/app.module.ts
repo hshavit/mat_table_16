@@ -10,6 +10,8 @@ import { DemoMaterialModule } from './material-module';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { GenGrid2Component, GenGrid2Module } from 'genGrid2';
+import { GenGridEditableComponent, genGridEditable } from 'gen-grid-editable';
 
 
 export const MAT_MDC_DIALOG_DATA = new InjectionToken<any>('MatMdcDialogData');
@@ -20,7 +22,9 @@ export const MAT_MDC_DIALOG_DATA = new InjectionToken<any>('MatMdcDialogData');
     TableBasicExample2,
   ],
   imports: [
-    MatDialogModule ,
+    GenGrid2Module,
+    genGridEditable,
+    MatDialogModule,
     MatInputModule,
     MatButtonModule,
     DemoMaterialModule,
@@ -29,11 +33,10 @@ export const MAT_MDC_DIALOG_DATA = new InjectionToken<any>('MatMdcDialogData');
     BrowserModule,
     BrowserAnimationsModule
   ],
-  /* providers: [ MatDialog], */
   providers: [
-    // Other providers...
+    GenGridEditableComponent,  AppModule,
     MatDialog,
-    { provide:  MAT_MDC_DIALOG_DATA, useValue: {} }, // You may replace {} with the default data for your dialog.
+    { provide:  MAT_MDC_DIALOG_DATA, useValue: {} },
   ],
   bootstrap: [AppComponent]
 })

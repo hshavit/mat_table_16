@@ -2,7 +2,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "projects/gen-grid2/src",
     "outDir": "../../out-tsc/lib",
     "declaration": true,
     "declarationMap": true,
