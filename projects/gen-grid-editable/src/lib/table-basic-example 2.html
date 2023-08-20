@@ -7,9 +7,21 @@
 7    width:fit-content !important;
   } */
 
+  td{
+    min-width: 365px;
+    min-height: 91.47px;
+  }
+  .mat-mdc-table .mdc-data-table__row {
+    height: 104.284px !important;
+}
+ /*  tr{
+    min-width: 365px;
+    min-height: 91.47px;
+  } */
+
   p{
     width: 274.81px !important;
-    height: 78.65px;
+    height: 91.47px;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -95,7 +107,9 @@
             class="left-aligned-cell"
             [formGroup]="element"
           >
-            <mat-form-field *ngIf="!VOForm.get('VORows')?.value[i].isEditable" style="width: auto"
+          <!-- style="width: auto" -->
+          <!-- style="width: auto" -->
+            <mat-form-field *ngIf="!VOForm.get('VORows')?.value[i].isEditable"
             [appearance]="VOForm.get('VORows')?.value[i].isEditable?  'outline' : 'fill'">
               <input
                 matInput
@@ -105,13 +119,14 @@
               />
 
             </mat-form-field>
-            <p style="width: auto" class="mat-mdc-input-element
+            <p  class="mat-mdc-input-element
             ng-tns-c14-50 ng-touched
             ng-pristine
             ng-valid
             mat-mdc-form-field-input-control
             mdc-text-field__input
-            cdk-text-field-autofill-monitored"  *ngIf="VOForm.get('VORows')?.value[i].isEditable" >
+            cdk-text-field-autofill-monitored"
+            *ngIf="VOForm.get('VORows')?.value[i].isEditable" >
               {{VOForm.get('VORows')?.value[i][key] }}
             </p>
             </td

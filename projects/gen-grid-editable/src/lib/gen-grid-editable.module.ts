@@ -15,6 +15,7 @@ import { GenGridEditableComponent } from './gen-grid-editable.component';
 import { TableBasicExample2 } from './table-basic-example 2';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MatCardModule } from '@angular/material/card';
     MatSelectModule,
     MatPaginatorModule,
     MatTableModule,
+    MatCheckboxModule,
     CommonModule,
     BrowserAnimationsModule,
     MatFormFieldModule

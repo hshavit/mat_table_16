@@ -1,6 +1,6 @@
 {
   "name": "gen-grid2",
-  "version": "0.0.99",
+  "version": "0.0.101",
   "peerDependencies": {
     "@angular/animations": "^16.1.6",
     "@angular/cdk": "^16.1.5",
