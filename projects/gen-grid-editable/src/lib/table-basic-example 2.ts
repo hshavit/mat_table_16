@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, HostListener, Inject, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, HostListener, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import {
   AbstractControl,
   FormArray,
@@ -11,6 +10,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { startWith, tap } from 'rxjs/operators';
+import { GenGridEditableService } from '../gen-grid-editable.service';
 
 
 
@@ -97,9 +97,10 @@ export class TableBasicExample2 implements OnInit, OnChanges{
   }
 
   constructor(
+  public getGrid2Service: GenGridEditableService,
   private fb: FormBuilder,
   private _formBuilder: FormBuilder) {
-    this.ELEMENT_DATA =  this.getDataSource();
+    this.ELEMENT_DATA =  this.getData();
     this.ngOnInitProc();
     this.tt = this.ELEMENT_DATA[0];
     this.displayedColumns = [...Object.keys(this.ELEMENT_DATA[0]),
@@ -203,6 +204,18 @@ export class TableBasicExample2 implements OnInit, OnChanges{
   }
 
   // @ViewChild('table') table: MatTable<PeriodicElement>;
+
+  saveData() {
+    return this.getGrid2Service.saveData(this.dataSource.data.map(t=> t.value));
+  }
+
+  getData() {
+    let rc = this.getGrid2Service.fetchDataSynchronously();
+    if(!rc || rc['menu']  )
+      rc = rc['menu'];
+    return rc;
+  }
+
   AddNewRow() {
     // this.getBasicDetails();
     const control = this.VOForm.get('VORows') as FormArray;

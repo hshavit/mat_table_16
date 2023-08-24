@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
-import { GenGrid2Service } from './gen-grid2.service';
+import { GenGrid2Service } from '../gen-grid2.service';
 
 @Directive({
   selector: '[appDraggable]',

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GenGridEditableService } from './gen-grid-editable.service';
+import { GenGridEditableService } from '../gen-grid-editable.service';
 
 describe('GenGridEditableService', () => {
   let service: GenGridEditableService;

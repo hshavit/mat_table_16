@@ -73,9 +73,9 @@ export class TableBasicExample implements OnInit {
       return acc;
     }, []);
 
-    setInterval(() => {
-      console.log(this.dataSource);
-    }, 4500);
+    /* setInterval(() => { */
+      /* console.log(this.dataSource); */
+    /* }, 4500); */
 
     return jsonData.menu;
   }

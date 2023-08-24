@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GenGrid2Service } from './gen-grid2.service';
+import { GenGrid2Service } from '../gen-grid2.service';
 
 describe('GenGrid2Service', () => {
   let service: GenGrid2Service;
