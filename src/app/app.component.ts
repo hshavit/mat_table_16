@@ -13,6 +13,7 @@ export class AppComponent {
   title = 'mat_table_16';
 
   constructor(
+
 /*     @Inject(MAT_MDC_DIALOG_DATA) public dialogData: any,
     @Inject(MAT_DIALOG_DATA) public data: any, */
     private dialog: MatDialog) {
@@ -28,8 +29,17 @@ export class AppComponent {
         }
       }, 1000);
 
- */  }
+ */
+      this.openDialogWithData();
+  }
 
+ openDialogWithData() {
+  const ELEMENT_DATA = []; // Your data array
+
+  this.dialog.open(TableBasicExample, {
+    data: ELEMENT_DATA
+  });
+}
   modalGrid(msg = null) {
 
     const ELEMENT_DATA =  msg;
