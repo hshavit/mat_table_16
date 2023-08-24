@@ -14,6 +14,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { DraggableDirective } from './draggable.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule, FormsModule, MatFormFieldModule, MatInputModule,
     MatProgressSpinnerModule,
     HttpClientModule,
+    MatButtonModule,
     MatSortModule,
     MatSelectModule,
     MatPaginatorModule,

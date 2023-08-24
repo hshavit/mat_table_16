@@ -11,6 +11,10 @@ table {
   width: 100%;
 }
 
+.highlighted {
+  background-color: gray;
+}
+
 
 /* Border */
 .mat-form-field-appearance-outline .mat-form-field-outline {

@@ -12,32 +12,38 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { GenGrid2Component, GenGrid2Module } from 'genGrid2';
 import { GenGridEditableComponent, genGridEditable } from 'gen-grid-editable';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatTableModule } from "@angular/material/table";
 
 
 export const MAT_MDC_DIALOG_DATA = new InjectionToken<any>('MatMdcDialogData');
 @NgModule({
-  declarations: [
-    AppComponent,
-    TableBasicExample,
-    TableBasicExample2,
+
+    providers: [
+        GenGridEditableComponent, AppModule,
+        MatDialog,
+        { provide: MAT_MDC_DIALOG_DATA, useValue: {} },
+    ],
+
+    imports: [
+        GenGrid2Module,
+        genGridEditable,
+        MatDialogModule,
+        MatInputModule,
+        MatButtonModule,
+        DemoMaterialModule,
+        ReactiveFormsModule,
+        FormsModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatTableModule
+    ],
+    declarations: [
+      AppComponent,
+      TableBasicExample,
+      TableBasicExample2,
   ],
-  imports: [
-    GenGrid2Module,
-    genGridEditable,
-    MatDialogModule,
-    MatInputModule,
-    MatButtonModule,
-    DemoMaterialModule,
-    ReactiveFormsModule,
-    FormsModule,
-    BrowserModule,
-    BrowserAnimationsModule
-  ],
-  providers: [
-    GenGridEditableComponent,  AppModule,
-    MatDialog,
-    { provide:  MAT_MDC_DIALOG_DATA, useValue: {} },
-  ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

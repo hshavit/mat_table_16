@@ -111,7 +111,7 @@ export class TableBasicExample2 implements OnInit, OnChanges{
   keyss(obj: Object) {
     if(obj==undefined)
       return;
-    console.log(Object.keys(obj));
+    /* console.log(Object.keys(obj)); */
     return Object.keys(obj);
   }
 

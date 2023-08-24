@@ -1,25 +1,41 @@
 <style>
-  /* * >*{
-    width:fit-content !important;
-  } */
 
-/*   input{
-7    width:fit-content !important;
-  } */
+  body {
+    font-family: Roboto, Arial, sans-serif;
+    margin: 0;
+  }
 
-  td{
+  .basic-container {
+    padding: 5px;
+  }
+
+  .version-info {
+    font-size: 8pt;
+    float: right;
+  }
+
+  .mat-row.hovered {
+    background: red;
+  }
+
+  .mat-row.highlighted {
+    background: #999;
+  }
+
+  mat-cell.mat-cell,
+  mat-header-cell.mat-header-cell {
+    overflow: visible;
+  }
+
+  td {
     min-width: 365px;
     min-height: 91.47px;
   }
   .mat-mdc-table .mdc-data-table__row {
     height: 104.284px !important;
-}
- /*  tr{
-    min-width: 365px;
-    min-height: 91.47px;
-  } */
+  }
 
-  p{
+  p {
     width: 274.81px !important;
     height: 91.47px;
     display: flex;
@@ -27,45 +43,43 @@
     justify-content: left;
     padding: 0 16px;
     -webkit-font-smoothing: antialiased;
-    font-family: var(--mdc-typography-body1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif))!important;
-    font-size: var(--mdc-typography-body1-font-size, 16px)!important;
-    line-height: var(--mdc-typography-body1-line-height, 24px)!important;
-    font-weight: var(--mdc-typography-body1-font-weight, 400)!important;
-    letter-spacing: var(--mdc-typography-body1-letter-spacing, 0.03125em)!important;
-    -webkit-text-decoration: var(--mdc-typography-body1-text-decoration, inherit)!important;
-    text-decoration: var(--mdc-typography-body1-text-decoration, inherit)!important;
-    text-transform: var(--mdc-typography-body1-text-transform, none)!important;
+    font-family: var(
+      --mdc-typography-body1-font-family,
+      var(--mdc-typography-font-family, Roboto, sans-serif)
+    ) !important;
+    font-size: var(--mdc-typography-body1-font-size, 16px) !important;
+    line-height: var(--mdc-typography-body1-line-height, 24px) !important;
+    font-weight: var(--mdc-typography-body1-font-weight, 400) !important;
+    letter-spacing: var(
+      --mdc-typography-body1-letter-spacing,
+      0.03125em
+    ) !important;
+    -webkit-text-decoration: var(
+      --mdc-typography-body1-text-decoration,
+      inherit
+    ) !important;
+    text-decoration: var(
+      --mdc-typography-body1-text-decoration,
+      inherit
+    ) !important;
+    text-transform: var(--mdc-typography-body1-text-transform, none) !important;
   }
-  .draggable {
- /*   position: absolute;
-      background-color: #f0f0f0;
-      padding: 10px;
-      cursor: grab; */
-}
-.left-aligned-cell {
-  text-align: left;
-}
+  .left-aligned-cell {
+    text-align: left;
+  }
 
-.resizable {
-  /* position: absolute;
-  background-color: #f0f0f0;
-  padding: 10px;
-  cursor: move; */
-}
-
-.handle {
-  position: absolute;
-  width: 40px !important;
-  height: 40px;
-  background-color: #007bff;
-  bottom: 0;
-  right: 0;
-  cursor: nwse-resize;
-}
-
+  .handle {
+    position: absolute;
+    width: 40px !important;
+    height: 40px;
+    background-color: #007bff;
+    bottom: 0;
+    right: 0;
+    cursor: nwse-resize;
+  }
 </style>
 
-<div id="myDiv" class=" resizable mat-elevation-z8">
+<div id="myDiv" class="resizable mat-elevation-z8">
   <div stlye="height: 22px; background: red;" class="handle"></div>
   <button>
     <mat-icon (click)="AddNewRow()" class="add-button">add_box</mat-icon>
@@ -107,30 +121,25 @@
             class="left-aligned-cell"
             [formGroup]="element"
           >
-          <!-- style="width: auto" -->
-          <!-- style="width: auto" -->
-            <mat-form-field *ngIf="!VOForm.get('VORows')?.value[i].isEditable"
-            [appearance]="VOForm.get('VORows')?.value[i].isEditable?  'outline' : 'fill'">
+            <mat-form-field
+              *ngIf="!VOForm.get('VORows')?.value[i].isEditable"
+              [appearance]="VOForm.get('VORows')?.value[i].isEditable?  'outline' : 'fill'"
+            >
               <input
                 matInput
                 type="text"
                 [formControlName]="key"
                 [readonly]="VOForm.get('VORows')?.value[i].isEditable"
               />
-
             </mat-form-field>
-            <p  class="mat-mdc-input-element
-            ng-tns-c14-50 ng-touched
-            ng-pristine
-            ng-valid
-            mat-mdc-form-field-input-control
-            mdc-text-field__input
-            cdk-text-field-autofill-monitored"
-            *ngIf="VOForm.get('VORows')?.value[i].isEditable" >
+            <p
+              class="mat-mdc-input-element ng-tns-c14-50 ng-touched ng-pristine ng-valid mat-mdc-form-field-input-control mdc-text-field__input cdk-text-field-autofill-monitored"
+              *ngIf="VOForm.get('VORows')?.value[i].isEditable"
+            >
               {{VOForm.get('VORows')?.value[i][key] }}
             </p>
-            </td
-        ></ng-container>
+          </td></ng-container
+        >
 
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef>Action</th>
@@ -186,7 +195,14 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns;"
+          [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
+          (click)="row.highlighted = !row.highlighted"
+          (mouseover)="row.hovered = true"
+          (mouseout)="row.hovered = false"
+        ></tr>
 
         <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
@@ -207,8 +223,6 @@
 
   <!-- <mat-paginator-goto [length]="100" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
 		(page)="paginationChange($event)"></mat-paginator-goto> -->
-
-
 
   <mat-paginator
     [pageSizeOptions]="[5, dataSource_data_length() > 8? dataSource_data_length():-2  ]"

@@ -21,3 +21,6 @@ table {
 input.mat-input-element {
   color: rgb(0, 0, 0);
 }
+.highlighted {
+  background: gray !important;
+}

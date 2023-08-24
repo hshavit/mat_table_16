@@ -1,55 +1,86 @@
-
-<pre>
-  tttttttttttttttttttt
-  {{displayedColumns | json}}
-  {{dataSource.data}}
-</pre>
+<style>
 
 
-<div appDraggable id="ddd" style="cursor: move; background-color: aqua;" >
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+.basic-container {
+  padding: 5px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+.mat-row.hovered {
+  background: yellow;
+}
+
+.mat-row.highlighted {
+  background: #999;
+}
+
+/*
+  This is a work around for checkbox bug in material row
+  https://github.com/angular/material2/issues/8600
+*/
+mat-cell.mat-cell, mat-header-cell.mat-header-cell {
+  overflow: visible;
+}
+</style>
+<!-- appDraggable -->
+<div  id="ddd" style="background-color: aqua;" >
 <br>
 <br>
 <mat-form-field style="width: 40%">
- <mat-label>Filter</mat-label>
- <input
-   matInput
-   (keyup)="applyFilter($event)"
-   placeholder="Ex. ium"
-   #input
- >
+  <mat-label>Filter</mat-label>
+  <input
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="Ex. ium"
+    #input
+  >
 </mat-form-field>
 
 <!-- <mat-form-field>
- <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
 </mat-form-field>
 <div class="spinner-container" *ngIf="true">
-     <mat-spinner id="spinner"></mat-spinner>
+      <mat-spinner id="spinner"></mat-spinner>
 </div> -->
 
-<div class="col-md-12">
- <div class="row">
-   <div class="example-container mat-elevation-z8">
-     <mat-table [dataSource]="dataSource" matSort>
-       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-       <ng-container *ngFor="let key of keyss(tt)" [matColumnDef]="key">
-         <mat-header-cell *matHeaderCellDef mat-sort-header> {{key}} </mat-header-cell>
-         <mat-cell *matCellDef="let row"> {{row[key]}} </mat-cell>
-       </ng-container>
-       <!-- <ng-container matColumnDef="name">
-         <mat-header-cell *matHeaderCellDef mat-sort-header> TOKEN NAME </mat-header-cell>
-         <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
-       </ng-container> -->
+<!-- *ngIf = "storedObArr$ | async" -->
 
-       <ng-container matColumnDef="description">
-         <mat-header-cell *matHeaderCellDef mat-sort-header> INDUSTRY </mat-header-cell>
-         <mat-cell *matCellDef="let row" [style.color]=""> {{row.description}} </mat-cell>
-       </ng-container>
+<div  class="col-md-12">
+	<div class="row">
+		<div class="example-container mat-elevation-z8">
+			<mat-table [dataSource]="dataSource" matSort>
+				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+				<mat-row *matRowDef="let row; columns: displayedColumns;"
+        [ngClass]="{ highlighted: row.highlighted, hovered: row.hovered}"
+         (click)="row.highlighted = !row.highlighted; "
+         (mouseover)="row.hovered = true; ttt(row)"
+         (mouseout)="row.hovered = false; tttt()"  >
+        </mat-row>
+        <ng-container *ngFor="let key of keyss(displayedColumns)" [matColumnDef]="key">
+					<mat-header-cell *matHeaderCellDef mat-sort-header> {{key}} </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row[key]}} </mat-cell>
+				</ng-container>
+				<!-- <ng-container matColumnDef="name">
+					<mat-header-cell *matHeaderCellDef mat-sort-header> TOKEN NAME </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+				</ng-container> -->
 
-
-     </mat-table>
-     <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-   </div>
- </div>
+				<!-- <ng-container matColumnDef="description">
+					<mat-header-cell *matHeaderCellDef mat-sort-header> INDUSTRY </mat-header-cell>
+					<mat-cell *matCellDef="let row" [style.color]=""> {{row.description}} </mat-cell>
+				</ng-container> -->
+			</mat-table>
+			<mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+		</div>
+	</div>
 </div>
 </div>
